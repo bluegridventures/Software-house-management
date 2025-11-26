@@ -13,7 +13,7 @@ const menuItems = [
   { icon: "calendar", label: "Calendar" },
   { icon: "plane", label: "Vacations" },
   { icon: "users", label: "Employees" },
-  { icon: "message", label: "Messenger" },
+  // { icon: "message", label: "Messenger" },
   { icon: "info", label: "Info Portal" },
 ]
 
@@ -74,11 +74,11 @@ export default function Sidebar({ currentPage, onPageChange, onLogout }: Sidebar
                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM9 6a4 4 0 110 8H3a4 4 0 010-8h6z" />
               </svg>
             )}
-            {item.icon === "message" && (
+            /* {item.icon === "message" && (
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5z" />
               </svg>
-            )}
+            )} */
             {item.icon === "info" && (
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0z" />
