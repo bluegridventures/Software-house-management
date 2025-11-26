@@ -9,7 +9,6 @@ import ProjectsPage from "@/components/pages/projects-page"
 import CalendarPage from "@/components/pages/calendar-page"
 import VacationsPage from "@/components/pages/vacations-page"
 import EmployeesPage from "@/components/pages/employees-page"
-import MessengerPage from "@/components/pages/messenger-page"
 import InfoPortalPage from "@/components/pages/info-portal-page"
 import FinancesPage from "@/components/pages/finances-page"
 import LoginPage from "@/components/pages/login-page"
@@ -34,7 +33,6 @@ function HomeContent() {
           {currentPage === "Calendar" && <CalendarPage />}
           {currentPage === "Vacations" && <VacationsPage />}
           {currentPage === "Employees" && <EmployeesPage />}
-          /* {currentPage === "Messenger" && <MessengerPage />} */
           {currentPage === "Info Portal" && <InfoPortalPage />}
         </main>
       </div>
