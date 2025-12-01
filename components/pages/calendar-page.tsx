@@ -11,26 +11,26 @@ export default function CalendarPage() {
   ]
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-2">
+    <div className="p-4 sm:p-6 md:p-8">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-2">
           Calendar
         </h1>
-        <p className="text-slate-600">View and manage all upcoming events and meetings</p>
+        <p className="text-sm sm:text-base text-slate-600">View and manage all upcoming events and meetings</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-3 sm:gap-4">
         {events.map((event, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-lg p-6 border border-slate-200 hover:shadow-lg transition-all flex items-center justify-between"
+            className="bg-white rounded-lg p-4 sm:p-5 md:p-6 border border-slate-200 hover:shadow-lg transition-all flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4"
           >
-            <div>
-              <p className="text-slate-500 text-sm mb-1">{event.date}</p>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">{event.title}</h3>
-              <div className="flex items-center gap-4">
-                <span className="text-slate-600 text-sm">
-                  <svg className="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+            <div className="flex-1">
+              <p className="text-slate-500 text-xs sm:text-sm mb-1">{event.date}</p>
+              <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-2">{event.title}</h3>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                <span className="text-slate-600 text-xs sm:text-sm">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
                     <path
                       fillRule="evenodd"
                       d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
@@ -38,8 +38,8 @@ export default function CalendarPage() {
                   </svg>
                   {event.time}
                 </span>
-                <span className="text-slate-600 text-sm">
-                  <svg className="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <span className="text-slate-600 text-xs sm:text-sm">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM9 6a4 4 0 110 8H3a4 4 0 010-8h6z" />
                   </svg>
                   {event.attendees} attendees
@@ -47,7 +47,7 @@ export default function CalendarPage() {
               </div>
             </div>
             <span
-              className={`text-xs font-semibold px-4 py-2 rounded-full ${
+              className={`text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full whitespace-nowrap self-start sm:self-auto ${
                 event.type === "meeting"
                   ? "bg-blue-100 text-blue-700"
                   : event.type === "presentation"

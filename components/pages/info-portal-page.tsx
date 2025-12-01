@@ -17,37 +17,37 @@ export default function InfoPortalPage() {
   ]
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-2">
+    <div className="p-4 sm:p-6 md:p-8">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-2">
           Info Portal
         </h1>
-        <p className="text-slate-600">Company information, documents, and announcements</p>
+        <p className="text-sm sm:text-base text-slate-600">Company information, documents, and announcements</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         {/* Documents */}
-        <div className="col-span-2">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Documents</h2>
-          <div className="space-y-4">
+        <div className="lg:col-span-2">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Documents</h2>
+          <div className="space-y-3 sm:space-y-4">
             {documents.map((doc) => (
               <div
                 key={doc.id}
-                className="bg-white rounded-lg p-6 border border-slate-200 hover:shadow-lg transition-all"
+                className="bg-white rounded-lg p-4 sm:p-6 border border-slate-200 hover:shadow-lg transition-all"
               >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">{doc.title}</h3>
-                    <div className="flex items-center gap-4 text-sm text-slate-600">
-                      <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-medium">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-slate-900 mb-2 text-sm sm:text-base">{doc.title}</h3>
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-slate-600">
+                      <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-medium whitespace-nowrap">
                         {doc.category}
                       </span>
-                      <span>{doc.date}</span>
-                      <span>{doc.views} views</span>
+                      <span className="whitespace-nowrap">{doc.date}</span>
+                      <span className="whitespace-nowrap">{doc.views} views</span>
                     </div>
                   </div>
                   <svg
-                    className="w-5 h-5 text-slate-400 hover:text-slate-600"
+                    className="w-5 h-5 text-slate-400 hover:text-slate-600 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -67,17 +67,17 @@ export default function InfoPortalPage() {
 
         {/* Announcements Sidebar */}
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Announcements</h2>
-          <div className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Announcements</h2>
+          <div className="space-y-3 sm:space-y-4">
             {announcements.map((ann) => (
               <div
                 key={ann.id}
-                className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-200"
+                className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-3 sm:p-4 border border-blue-200"
               >
-                <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-semibold text-slate-900 text-sm">{ann.title}</h3>
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h3 className="font-semibold text-slate-900 text-xs sm:text-sm flex-1">{ann.title}</h3>
                   <span
-                    className={`text-xs font-semibold px-2 py-1 rounded-full ${
+                    className={`text-xs font-semibold px-2 py-1 rounded-full whitespace-nowrap ${
                       ann.priority === "High" ? "bg-red-100 text-red-700" : "bg-yellow-100 text-yellow-700"
                     }`}
                   >

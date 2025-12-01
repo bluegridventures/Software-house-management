@@ -7,5 +7,9 @@ import {
 } from 'next-themes'
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+  return (
+    <NextThemesProvider {...props}>
+      <div className="w-full h-full min-h-screen">{children}</div>
+    </NextThemesProvider>
+  )
 }

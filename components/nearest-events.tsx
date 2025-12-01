@@ -13,8 +13,11 @@ const events = [
 export default function NearestEvents({ onViewAll }: NearestEventsProps) {
   return (
     <div className="bg-white rounded-lg p-6 border border-gray-200">
-      <div className="flex items-center justify-between mb-4">
+      
+      {/* Header */}
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <h2 className="text-lg font-bold text-gray-900">Nearest Events</h2>
+
         <button
           onClick={onViewAll}
           className="text-blue-600 text-sm font-medium hover:text-blue-700 flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-blue-50 transition-colors"
@@ -29,26 +32,37 @@ export default function NearestEvents({ onViewAll }: NearestEventsProps) {
         </button>
       </div>
 
+      {/* Events */}
       <div className="space-y-3">
         {events.map((event, idx) => (
           <button
             key={idx}
-            className={`w-full text-left border-l-4 rounded p-3 transition-all hover:shadow-md cursor-pointer ${
-              idx === 0
-                ? "border-yellow-400 bg-yellow-50 hover:bg-yellow-100"
-                : idx === 1
+            className={`w-full text-left border-l-4 rounded p-3 transition-all hover:shadow-md cursor-pointer
+              ${
+                idx === 0
+                  ? "border-yellow-400 bg-yellow-50 hover:bg-yellow-100"
+                  : idx === 1
                   ? "border-purple-400 bg-purple-50 hover:bg-purple-100"
                   : "border-green-400 bg-green-50 hover:bg-green-100"
-            }`}
+              }
+            `}
           >
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              
+              {/* Title + Time */}
+              <div className="flex-1 min-w-[200px]">
                 <h3 className="font-semibold text-gray-900 text-sm">{event.title}</h3>
                 <p className="text-gray-600 text-xs mt-1">{event.time}</p>
               </div>
+
+              {/* Right Icons */}
               <div className="flex items-center gap-2">
                 <svg
-                  className={`w-4 h-4 ${event.priority === "up" ? "text-yellow-500 transform rotate-180" : "text-green-500"}`}
+                  className={`w-4 h-4 ${
+                    event.priority === "up"
+                      ? "text-yellow-500 rotate-180"
+                      : "text-green-500"
+                  }`}
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -57,6 +71,7 @@ export default function NearestEvents({ onViewAll }: NearestEventsProps) {
                     d="M12 7a1 1 0 110-2h.01a1 1 0 110 2H12zm-2 2a1 1 0 100 2H10a1 1 0 100-2H10zm6-6a1 1 0 11-2 0 1 1 0 012 0zM7 9a1 1 0 100-2 1 1 0 000 2z"
                   />
                 </svg>
+
                 <span className="text-gray-600 text-xs flex items-center gap-1">
                   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                     <path
@@ -67,6 +82,7 @@ export default function NearestEvents({ onViewAll }: NearestEventsProps) {
                   {event.duration}
                 </span>
               </div>
+
             </div>
           </button>
         ))}

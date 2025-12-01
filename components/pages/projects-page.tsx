@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useUser } from "@/components/user-context"
+import { useState } from "react";
+import { useUser } from "@/components/user-context";
 
 export default function ProjectsPage() {
-  const { isAdmin } = useUser()
-  const [editingId, setEditingId] = useState<string | null>(null)
+  const { isAdmin } = useUser();
   const [projects, setProjects] = useState([
     {
       id: "PN0001265",
@@ -57,53 +56,62 @@ export default function ProjectsPage() {
       team: ["Leo", "Mia", "Noah"],
       progress: 30,
     },
-  ])
+  ]);
 
   const handleStatusChange = (id: string, newStatus: string) => {
-    setProjects(projects.map((p) => (p.id === id ? { ...p, status: newStatus } : p)))
-    setEditingId(null)
-  }
+    setProjects(projects.map((p) => (p.id === id ? { ...p, status: newStatus } : p)));
+  };
 
   return (
-    <div className="p-8">
-      <div className="mb-8 flex items-center justify-between">
+    <div className="p-4 sm:p-6 lg:p-8">
+      {/* Header */}
+      <div className="mb-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-2">
+          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-2">
             All Projects
           </h1>
-          <p className="text-slate-600">Manage and track all your software house projects</p>
+          <p className="text-slate-600 text-sm sm:text-base">
+            Manage and track all your software house projects
+          </p>
         </div>
+
         {isAdmin && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-2">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 w-full sm:w-auto">
             <p className="text-sm font-medium text-blue-700">Edit Mode: Enabled</p>
             <p className="text-xs text-blue-600">Click status badges to edit</p>
           </div>
         )}
       </div>
 
+      {/* Projects List */}
       <div className="grid grid-cols-1 gap-6">
         {projects.map((project) => (
           <div
             key={project.id}
-            className="bg-white rounded-lg p-6 border border-slate-200 hover:shadow-lg transition-shadow"
+            className="bg-white rounded-lg p-4 sm:p-6 border border-slate-200 hover:shadow-lg transition-shadow"
           >
-            <div className="flex items-start justify-between mb-4">
+            {/* Title Row */}
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
               <div>
                 <p className="text-slate-500 text-xs mb-1">{project.id}</p>
-                <h3 className="text-lg font-semibold text-slate-900">{project.name}</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-slate-900">
+                  {project.name}
+                </h3>
               </div>
+
               <div className="flex items-center gap-2">
                 <span
                   className={`text-xs font-semibold px-3 py-1 rounded-full ${
                     project.priority === "High"
                       ? "bg-red-100 text-red-700"
                       : project.priority === "Medium"
-                        ? "bg-yellow-100 text-yellow-700"
-                        : "bg-green-100 text-green-700"
+                      ? "bg-yellow-100 text-yellow-700"
+                      : "bg-green-100 text-green-700"
                   }`}
                 >
                   {project.priority}
                 </span>
+
                 {isAdmin ? (
                   <select
                     value={project.status}
@@ -112,10 +120,10 @@ export default function ProjectsPage() {
                       project.status === "Completed"
                         ? "bg-green-100 text-green-700 border-green-300"
                         : project.status === "In Progress"
-                          ? "bg-blue-100 text-blue-700 border-blue-300"
-                          : project.status === "Planning"
-                            ? "bg-purple-100 text-purple-700 border-purple-300"
-                            : "bg-gray-100 text-gray-700 border-gray-300"
+                        ? "bg-blue-100 text-blue-700 border-blue-300"
+                        : project.status === "Planning"
+                        ? "bg-purple-100 text-purple-700 border-purple-300"
+                        : "bg-gray-100 text-gray-700 border-gray-300"
                     }`}
                   >
                     <option>In Progress</option>
@@ -129,10 +137,10 @@ export default function ProjectsPage() {
                       project.status === "Completed"
                         ? "bg-green-100 text-green-700"
                         : project.status === "In Progress"
-                          ? "bg-blue-100 text-blue-700"
-                          : project.status === "Planning"
-                            ? "bg-purple-100 text-purple-700"
-                            : "bg-gray-100 text-gray-700"
+                        ? "bg-blue-100 text-blue-700"
+                        : project.status === "Planning"
+                        ? "bg-purple-100 text-purple-700"
+                        : "bg-gray-100 text-gray-700"
                     }`}
                   >
                     {project.status}
@@ -141,12 +149,16 @@ export default function ProjectsPage() {
               </div>
             </div>
 
+            {/* Date */}
             <p className="text-slate-600 text-sm mb-4">Started {project.date}</p>
 
+            {/* Progress Bar */}
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-slate-600">Progress</span>
-                <span className="text-sm font-semibold text-slate-900">{project.progress}%</span>
+                <span className="text-sm font-semibold text-slate-900">
+                  {project.progress}%
+                </span>
               </div>
               <div className="w-full bg-slate-200 rounded-full h-2">
                 <div
@@ -156,18 +168,26 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-4 gap-4">
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div className="bg-slate-50 rounded-lg p-4">
                 <p className="text-slate-600 text-xs mb-2">All Tasks</p>
-                <p className="text-2xl font-bold text-slate-900">{project.tasks.all}</p>
+                <p className="text-xl sm:text-2xl font-bold text-slate-900">
+                  {project.tasks.all}
+                </p>
               </div>
+
               <div className="bg-slate-50 rounded-lg p-4">
                 <p className="text-slate-600 text-xs mb-2">Active</p>
-                <p className="text-2xl font-bold text-slate-900">{project.tasks.active}</p>
+                <p className="text-xl sm:text-2xl font-bold text-slate-900">
+                  {project.tasks.active}
+                </p>
               </div>
+
               <div className="col-span-2 bg-slate-50 rounded-lg p-4">
                 <p className="text-slate-600 text-xs mb-2">Team Members</p>
-                <div className="flex -space-x-2">
+
+                <div className="flex -space-x-2 overflow-x-auto">
                   {project.team.map((member, i) => (
                     <div
                       key={i}
@@ -184,5 +204,5 @@ export default function ProjectsPage() {
         ))}
       </div>
     </div>
-  )
+  );
 }
