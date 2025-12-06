@@ -5,8 +5,8 @@ import Image from 'next/image';
 const employees = [
   { name: "Henry Dustin", role: "Web & App Developer", level: "Senior", imageSrc: "/assets/henry.png" },
   { name: "Aliya", role: "Front-end Developer", level: "Junior", imageSrc: "/assets/aliya.png" },
-  { name: "Isma Rani", role: "AI / ML Engineer", level: "Senior", imageSrc: "/assets/isma.png" },
-  { name: "Olliya Dilawan", role: "Full Stack Developer", level: "Junior", imageSrc: "/assets/olliya.png" },
+  { name: "Isma Rani", role: "AI / ML Engineer", level: "Junior", imageSrc: "/assets/isma.png" },
+  { name: "Olliya Dilawar", role: "Full Stack Developer", level: "Junior", imageSrc: "/assets/olliya.png" },
   { name: "Laiba Javed", role: "AI / ML Engineer", level: "Junior", imageSrc: "/assets/laiba.png" },
   { name: "Fallak Sajad", role: "AI / ML Engineer", level: "Junior", imageSrc: "/assets/fallak.png" },
   { name: "Ikhlaq Ahmad", role: "AI / ML Engineer", level: "Junior", imageSrc: "/assets/ikhlaq.png" },
